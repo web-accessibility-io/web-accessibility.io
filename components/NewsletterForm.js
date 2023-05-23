@@ -15,6 +15,12 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
         email: inputEl.current.value,
+        notes: 'Subscribed via buttondown.app',
+        metadata: {},
+        tags: [],
+        referrer_url: '',
+        referring_subscriber_id: '',
+        subscriber_type: 'subscribed',
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -24,6 +30,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
 
     const { error } = await res.json()
     if (error) {
+      console.error(error)
       setError(true)
       return
     }

@@ -11,6 +11,12 @@ export default async (req, res) => {
     const response = await fetch(buttondownRoute, {
       body: JSON.stringify({
         email,
+        notes: 'Subscribed via buttondown.app',
+        metadata: {},
+        tags: [],
+        referrer_url: '',
+        referring_subscriber_id: '',
+        subscriber_type: 'subscribed',
       }),
       headers: {
         Authorization: `Token ${API_KEY}`,
