@@ -8,7 +8,10 @@ import useTranslation from 'next-translate/useTranslation'
 export const POSTS_PER_PAGE = 5
 
 export async function getStaticProps({ locale, defaultLocale, locales }) {
+  console.log('locale', locale)
+  console.log('defaultLocale', defaultLocale)
   const otherLocale = locale !== defaultLocale ? locale : ''
+  console.log('otherLocale', otherLocale)
   const posts = await getAllFilesFrontMatter('blog', otherLocale)
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
   const pagination = {

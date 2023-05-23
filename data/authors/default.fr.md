@@ -1,12 +1,12 @@
 ---
-name: Tails Azimuth
-avatar: /static/images/avatar.png
-occupation: Professeur des sciences atmosphériques
-company: Université de Stanford
-email: address@yoursite.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+name: Tim Damen
+avatar: /static/images/avatars/timdamen.jpeg
+occupation: Frontend developer
+company: timdamen.io
+email: info@web-accessibility.io
+twitter: https://twitter.com/timdamen_io
+linkedin: https://www.linkedin.com/company/web-accessibility-io/
+github: https://github.com/timdamen
 ---
 
 Tails Azimuth est un professeur des sciences atmosphériques au laboratoire d'IA de Stanford. Ses recherches portent sur la modélisation complexe des vents arrière, des vents avant et des vents arrière.
