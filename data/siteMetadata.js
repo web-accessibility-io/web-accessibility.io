@@ -1,9 +1,11 @@
 const siteMetadata = {
-  title: { en: 'Next.js Starter Blog', fr: 'Starter de blog NextJs', nl: 'Next.js Starter Blog' },
+  title: { en: 'web-accessibility.io', nl: 'web-accessibility.io' },
   author: 'Tim Damen',
-  headerTitle: { en: 'TailwindBlog', fr: 'blog Tailwind', nl: 'TailwindBlog' },
-  // description: 'A blog created with Next.js and Tailwind.css',
-  description: { en: 'en description', fr: 'Description en fr', nl: 'TailwindBlog' },
+  headerTitle: { en: 'web-accessibility.io', nl: 'web-accessibility.io' },
+  description: {
+    en: "Enhance your website's accessibility effortlessly with web-accessibility.io. Simplify web accessibility implementation for improved user experience.",
+    nl: "Enhance your website's accessibility effortlessly with web-accessibility.io. Simplify web accessibility implementation for improved user experience.",
+  },
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://web-accessibility.io',
