@@ -10,7 +10,6 @@ import TOCInline from '@/components/Toc';
 import { useEffect, useState } from 'react';
 import Breadcrumb from '@/components/Breadcrumb';
 import BreadcrumbItem from '@/components/BreadcrumbItem';
-import Breadcrumbs from '@/components/Breadcrumbs';
 
 export default function DocsLayout({
   frontMatter,
