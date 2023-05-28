@@ -1,30 +1,30 @@
 /* eslint-disable jsx-a11y/no-onchange */
-import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
-import Link from './Link'
-import SectionContainer from './SectionContainer'
-import Footer from './Footer'
-import MobileNav from './MobileNav'
-import ThemeSwitch from './ThemeSwitch'
+import siteMetadata from '@/data/siteMetadata';
+import headerNavLinks from '@/data/headerNavLinks';
+import Logo from '@/data/logo.svg';
+import Link from './Link';
+import SectionContainer from './SectionContainer';
+import Footer from './Footer';
+import MobileNav from './MobileNav';
+import ThemeSwitch from './ThemeSwitch';
 
-import useTranslation from 'next-translate/useTranslation'
-import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 
 const LayoutWrapper = ({ children }) => {
-  const { t } = useTranslation()
-  const router = useRouter()
-  const { locale, locales, defaultLocale } = router
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { locale, locales, defaultLocale } = router;
 
   const changeLanguage = (e) => {
-    const locale = e.target.value
-    router.push(router.asPath, router.asPath, { locale })
-  }
+    const locale = e.target.value;
+    router.push(router.asPath, router.asPath, { locale });
+  };
 
   return (
     <SectionContainer>
-      <div className="flex h-screen flex-col justify-between">
-        <header className="flex items-center justify-between py-10">
+      <header className="sticky top-0 z-40 w-full border-b bg-white dark:bg-black">
+        <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
@@ -68,12 +68,12 @@ const LayoutWrapper = ({ children }) => {
             <ThemeSwitch />
             <MobileNav />
           </div>
-        </header>
-        <main className="mb-auto">{children}</main>
-        <Footer />
-      </div>
+        </div>
+      </header>
+      <main className="container mb-auto flex-1">{children}</main>
+      <Footer />
     </SectionContainer>
-  )
-}
+  );
+};
 
-export default LayoutWrapper
+export default LayoutWrapper;

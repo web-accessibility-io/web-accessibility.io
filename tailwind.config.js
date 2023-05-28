@@ -1,5 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   experimental: {
@@ -14,6 +14,13 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       spacing: {
         '9/16': '56.25%',
@@ -29,6 +36,10 @@ module.exports = {
       },
       colors: {
         primary: colors.teal,
+        red: colors.red,
+        blue: colors.blue,
+        green: colors.green,
+        purple: colors.purple,
         gray: colors.neutral,
       },
       typography: (theme) => ({
@@ -165,4 +176,4 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
-}
+};

@@ -1,12 +1,12 @@
-import SocialIcon from '@/components/social-icons'
-import Image from '@/components/Image'
-import { PageSEO } from '@/components/SEO'
+import SocialIcon from '@/components/social-icons';
+import Image from '@/components/Image';
+import { PageSEO } from '@/components/SEO';
 
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 
 export default function AuthorLayout({ children, frontMatter, availableLocales }) {
-  const { name, avatar, occupation, company, email, twitter, linkedin, github } = frontMatter
-  const { t } = useTranslation()
+  const { name, avatar, occupation, company, email, twitter, linkedin, github } = frontMatter;
+  const { t } = useTranslation();
 
   return (
     <>
@@ -26,8 +26,8 @@ export default function AuthorLayout({ children, frontMatter, availableLocales }
             <Image
               src={avatar}
               alt="avatar"
-              width="192px"
-              height="192px"
+              width={192}
+              height={192}
               className="h-48 w-48 rounded-full"
             />
             <h3 className="pb-2 pt-4 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
@@ -40,9 +40,9 @@ export default function AuthorLayout({ children, frontMatter, availableLocales }
               <SocialIcon kind="twitter" href={twitter} />
             </div>
           </div>
-          <div className="prose max-w-none pb-8 pt-8 dark:prose-dark xl:col-span-2">{children}</div>
+          <div className="prose max-w-none py-8 dark:prose-dark xl:col-span-2">{children}</div>
         </div>
       </div>
     </>
-  )
+  );
 }
