@@ -1,11 +1,11 @@
-import Link from '@/components/Link'
+import Link from '@/components/Link';
 
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Pagination({ totalPages, currentPage }) {
-  const { t } = useTranslation()
-  const prevPage = parseInt(currentPage) - 1 > 0
-  const nextPage = parseInt(currentPage) + 1 <= parseInt(totalPages)
+  const { t } = useTranslation();
+  const prevPage = parseInt(currentPage) - 1 > 0;
+  const nextPage = parseInt(currentPage) + 1 <= parseInt(totalPages);
 
   return (
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
@@ -35,5 +35,5 @@ export default function Pagination({ totalPages, currentPage }) {
         )}
       </nav>
     </div>
-  )
+  );
 }

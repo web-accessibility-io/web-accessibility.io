@@ -1,22 +1,22 @@
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
-import ListLayout from '@/layouts/ListLayout'
-import { POSTS_PER_PAGE } from '../../blog'
+import { PageSEO } from '@/components/SEO';
+import siteMetadata from '@/data/siteMetadata';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
+import ListLayout from '@/layouts/ListLayout';
+import { POSTS_PER_PAGE } from '../../blog';
 
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 
 export async function getStaticPaths({ locales, defaultLocale }) {
   const paths = (
     await Promise.all(
       locales.map(async (locale) => {
-        const otherLocale = locale !== defaultLocale ? locale : ''
-        const totalPosts = await getAllFilesFrontMatter('blog', otherLocale) // don't forget to useotherLocale
-        const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE)
-        return Array.from({ length: totalPages }, (_, i) => [(i + 1).toString(), locale])
+        const otherLocale = locale !== defaultLocale ? locale : '';
+        const totalPosts = await getAllFilesFrontMatter('blog', otherLocale); // don't forget to useotherLocale
+        const totalPages = Math.ceil(totalPosts.length / POSTS_PER_PAGE);
+        return Array.from({ length: totalPages }, (_, i) => [(i + 1).toString(), locale]);
       })
     )
-  ).flat()
+  ).flat();
 
   return {
     paths: paths.map(([page, locale]) => ({
@@ -26,7 +26,7 @@ export async function getStaticPaths({ locales, defaultLocale }) {
       locale,
     })),
     fallback: false,
-  }
+  };
 }
 
 export async function getStaticProps(context) {
@@ -35,32 +35,32 @@ export async function getStaticProps(context) {
     defaultLocale,
     locales,
     locale,
-  } = context
-  const otherLocale = locale !== defaultLocale ? locale : ''
-  const posts = await getAllFilesFrontMatter('blog', otherLocale)
-  const pageNumber = parseInt(page)
+  } = context;
+  const otherLocale = locale !== defaultLocale ? locale : '';
+  const posts = await getAllFilesFrontMatter('blog', otherLocale);
+  const pageNumber = parseInt(page);
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
-  )
+  );
   const pagination = {
     currentPage: pageNumber,
     totalPages: Math.ceil(posts.length / POSTS_PER_PAGE),
-  }
+  };
 
   // Checking if available in other locale for SEO
-  const availableLocales = []
+  const availableLocales = [];
   await locales.forEach(async (ilocal) => {
-    const otherLocale = ilocal !== defaultLocale ? ilocal : ''
-    const iAllPosts = await getAllFilesFrontMatter('blog', otherLocale)
+    const otherLocale = ilocal !== defaultLocale ? ilocal : '';
+    const iAllPosts = await getAllFilesFrontMatter('blog', otherLocale);
     iAllPosts.forEach(() => {
       if (
         pageNumber <= Math.ceil(iAllPosts.length / POSTS_PER_PAGE) &&
         !availableLocales.includes(ilocal)
       )
-        availableLocales.push(ilocal)
-    })
-  })
+        availableLocales.push(ilocal);
+    });
+  });
 
   return {
     props: {
@@ -70,7 +70,7 @@ export async function getStaticProps(context) {
       locale,
       availableLocales,
     },
-  }
+  };
 }
 
 export default function PostPage({
@@ -80,7 +80,7 @@ export default function PostPage({
   locale,
   availableLocales,
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <PageSEO
@@ -95,5 +95,5 @@ export default function PostPage({
         title={t('common:all')}
       />
     </>
-  )
+  );
 }

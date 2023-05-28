@@ -1,15 +1,15 @@
-import siteMetadata from '@/data/siteMetadata'
-import projectsData from '@/data/projectsData'
-import Card from '@/components/Card'
-import { PageSEO } from '@/components/SEO'
-import useTranslation from 'next-translate/useTranslation'
+import siteMetadata from '@/data/siteMetadata';
+import projectsData from '@/data/projectsData';
+import Card from '@/components/Card';
+import { PageSEO } from '@/components/SEO';
+import useTranslation from 'next-translate/useTranslation';
 
 export async function getStaticProps({ locale, locales }) {
-  return { props: { locale, availableLocales: locales } }
+  return { props: { locale, availableLocales: locales } };
 }
 
 export default function Projects({ locale, availableLocales }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <PageSEO
@@ -41,5 +41,5 @@ export default function Projects({ locale, availableLocales }) {
         </div>
       </div>
     </>
-  )
+  );
 }

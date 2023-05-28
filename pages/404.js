@@ -1,11 +1,11 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import siteMetadata from '@/data/siteMetadata'
+import Link from '@/components/Link';
+import { PageSEO } from '@/components/SEO';
+import siteMetadata from '@/data/siteMetadata';
 
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 
 export default function FourZeroFour() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <PageSEO title={`Page Not Found - ${siteMetadata.title}`} />
@@ -39,5 +39,5 @@ export default function FourZeroFour() {
         </Link>
       </div>
     </>
-  )
+  );
 }

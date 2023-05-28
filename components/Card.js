@@ -1,10 +1,10 @@
-import Image from './Image'
-import Link from './Link'
+import Image from './Image';
+import Link from './Link';
 
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 
 const Card = ({ title, description, imgSrc, href }) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
       <div
@@ -55,7 +55,7 @@ const Card = ({ title, description, imgSrc, href }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

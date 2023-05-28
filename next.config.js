@@ -1,8 +1,8 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
-const nextTranslate = require('next-translate')
+const nextTranslate = require('next-translate');
 
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -13,7 +13,7 @@ const ContentSecurityPolicy = `
   connect-src *;
   font-src 'self';
   frame-src giscus.app
-`
+`;
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -51,7 +51,7 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-]
+];
 
 module.exports = nextTranslate(
   withBundleAnalyzer({
@@ -66,13 +66,13 @@ module.exports = nextTranslate(
           source: '/(.*)',
           headers: securityHeaders,
         },
-      ]
+      ];
     },
     webpack: (config, { dev, isServer }) => {
       config.module.rules.push({
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-      })
+      });
       if (!dev && !isServer) {
         // Replace React with Preact only in client production build
         Object.assign(config.resolve.alias, {
@@ -80,10 +80,10 @@ module.exports = nextTranslate(
           react: 'preact/compat',
           'react-dom/test-utils': 'preact/test-utils',
           'react-dom': 'preact/compat',
-        })
+        });
       }
 
-      return config
+      return config;
     },
   })
-)
+);

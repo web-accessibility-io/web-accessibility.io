@@ -1,24 +1,24 @@
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
-import formatDate from '@/lib/utils/formatDate'
-import useTranslation from 'next-translate/useTranslation'
+import Link from '@/components/Link';
+import { PageSEO } from '@/components/SEO';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
+import formatDate from '@/lib/utils/formatDate';
+import useTranslation from 'next-translate/useTranslation';
 
-import NewsletterForm from '@/components/NewsletterForm'
+import NewsletterForm from '@/components/NewsletterForm';
 
-const MAX_DISPLAY = 5
+const MAX_DISPLAY = 5;
 
 export async function getStaticProps({ locale, defaultLocale, locales }) {
-  const otherLocale = locale !== defaultLocale ? locale : ''
-  const posts = await getAllFilesFrontMatter('blog', otherLocale)
+  const otherLocale = locale !== defaultLocale ? locale : '';
+  const posts = await getAllFilesFrontMatter('blog', otherLocale);
 
-  return { props: { posts, locale, availableLocales: locales } }
+  return { props: { posts, locale, availableLocales: locales } };
 }
 
 export default function Home({ posts, locale, availableLocales }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <>
@@ -39,7 +39,7 @@ export default function Home({ posts, locale, availableLocales }) {
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, date, title, summary, tags } = frontMatter;
             return (
               <li key={slug} className="py-12">
                 <article>
@@ -84,7 +84,7 @@ export default function Home({ posts, locale, availableLocales }) {
                   </div>
                 </article>
               </li>
-            )
+            );
           })}
         </ul>
       </div>
@@ -105,5 +105,5 @@ export default function Home({ posts, locale, availableLocales }) {
         </div>
       )}
     </>
-  )
+  );
 }

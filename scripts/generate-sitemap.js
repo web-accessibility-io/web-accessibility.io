@@ -1,11 +1,11 @@
-const fs = require('fs')
-const globby = require('globby')
-const prettier = require('prettier')
-const siteMetadata = require('../data/siteMetadata')
-const i18nConfig = require('../i18n.json')
+const fs = require('fs');
+const globby = require('globby');
+const prettier = require('prettier');
+const siteMetadata = require('../data/siteMetadata');
+const i18nConfig = require('../i18n.json');
 
-;(async () => {
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+(async () => {
+  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
   const pages = await globby([
     'pages/*.js',
     'pages/*.tsx',
@@ -15,26 +15,26 @@ const i18nConfig = require('../i18n.json')
     '!pages/_*.js',
     '!pages/_*.tsx',
     '!pages/api',
-  ])
+  ]);
 
-  const { locales, defaultLocale } = i18nConfig
+  const { locales, defaultLocale } = i18nConfig;
 
   const pagesWithLoc = pages
     .map((page) => {
       if (page.includes('pages')) {
-        return locales.map((locale) => [page, locale])
+        return locales.map((locale) => [page, locale]);
       }
 
       if (page.includes('data') || page.includes('.xml')) {
         for (let i = 0; i < locales.length; i++) {
           if (page.includes(`.${locales[i]}.`)) {
-            return [[page, locales[i]]]
+            return [[page, locales[i]]];
           }
         }
-        return [[page, defaultLocale]]
+        return [[page, defaultLocale]];
       }
 
-      throw new Error('Sitemap case missing, please check scripts/generate-sitemap.js')
+      throw new Error('Sitemap case missing, please check scripts/generate-sitemap.js');
     })
     .flat()
     .map(([page, loc]) => [
@@ -52,12 +52,12 @@ const i18nConfig = require('../i18n.json')
           .replace('.xml', '')),
       loc,
       false, // Indicate if the element is already present or not
-    ])
+    ]);
 
   if (siteMetadata.siteUrl[siteMetadata.siteUrl.length - 1] == '/') {
-    console.error("/!\\: siteUrl in siteMetadata has an '/' at the end. Please remove it.")
+    console.error("/!\\: siteUrl in siteMetadata has an '/' at the end. Please remove it.");
   }
-  const siteUrl = siteMetadata.siteUrl
+  const siteUrl = siteMetadata.siteUrl;
 
   const sitemap = `
   <?xml version="1.0" encoding="UTF-8"?>
@@ -71,28 +71,28 @@ const i18nConfig = require('../i18n.json')
             ${pagesWithLoc
               .map(([path, loc, alreadyPresent]) => {
                 // @todo: Can you check especially here ?
-                const route = path.includes('/index') ? path.replace('/index', '') : path
+                const route = path.includes('/index') ? path.replace('/index', '') : path;
                 if (
                   path.includes(`/404.js`) ||
                   path.includes(`/blog/[...slug].js`) ||
                   alreadyPresent
                 ) {
                   // Not sure about the [...slug] condition...
-                  return
+                  return;
                 }
                 const routeMultiLang = pagesWithLoc.filter(
                   ([ipath, iloc, _]) => ipath.replace(`/${iloc}`, '') == path.replace(`/${loc}`, '')
-                )
+                );
                 const test = routeMultiLang.filter(([path, loc]) =>
                   loc === defaultLocale ? path : ''
-                )
-                routeMultiLang.map((e) => (e[2] = true)) //making allreadyPresnt to true
+                );
+                routeMultiLang.map((e) => (e[2] = true)); //making allreadyPresnt to true
                 if (routeMultiLang.length === 1)
                   return `
                         <url>
                             <loc>${siteUrl}${route}</loc>
                         </url>
-                    `
+                    `;
                 return `
                           <url>
                               <loc>${siteUrl}${
@@ -114,17 +114,17 @@ const i18nConfig = require('../i18n.json')
                     )
                     .join('')}
                           </url>
-                      `
+                      `;
               })
               .join('')}
         </urlset>
-    `
+    `;
 
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
     parser: 'html',
-  })
+  });
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap.xml', formatted)
-})()
+  fs.writeFileSync('public/sitemap.xml', formatted);
+})();

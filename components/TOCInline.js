@@ -30,12 +30,12 @@ const TOCInline = ({
 }) => {
   const re = Array.isArray(exclude)
     ? new RegExp('^(' + exclude.join('|') + ')$', 'i')
-    : new RegExp('^(' + exclude + ')$', 'i')
+    : new RegExp('^(' + exclude + ')$', 'i');
 
   const filteredToc = toc.filter(
     (heading) =>
       heading.depth >= fromHeading && heading.depth <= toHeading && !re.test(heading.value)
-  )
+  );
 
   const tocList = (
     <ul>
@@ -45,20 +45,20 @@ const TOCInline = ({
         </li>
       ))}
     </ul>
-  )
+  );
 
   return (
     <>
       {asDisclosure ? (
         <details open>
-          <summary className="ml-6 pb-2 pt-2 text-xl font-bold">Table of Contents</summary>
+          <summary className="ml-6 py-2 text-xl font-bold">Table of Contents</summary>
           <div className="ml-6">{tocList}</div>
         </details>
       ) : (
         tocList
       )}
     </>
-  )
-}
+  );
+};
 
-export default TOCInline
+export default TOCInline;

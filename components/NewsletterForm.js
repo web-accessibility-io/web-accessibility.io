@@ -1,16 +1,16 @@
-import { useRef, useState } from 'react'
+import { useRef, useState } from 'react';
 
-import siteMetadata from '@/data/siteMetadata'
-import useTranslation from 'next-translate/useTranslation'
+import siteMetadata from '@/data/siteMetadata';
+import useTranslation from 'next-translate/useTranslation';
 
 const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
-  const inputEl = useRef(null)
-  const [error, setError] = useState(false)
-  const [subscribed, setSubscribed] = useState(false)
-  const { t } = useTranslation()
+  const inputEl = useRef(null);
+  const [error, setError] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  const { t } = useTranslation();
 
   const subscribe = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
@@ -20,18 +20,18 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-    })
+    });
 
-    const { error } = await res.json()
+    const { error } = await res.json();
     if (error) {
-      setError(true)
-      return
+      setError(true);
+      return;
     }
 
-    inputEl.current.value = ''
-    setError(false)
-    setSubscribed(true)
-  }
+    inputEl.current.value = '';
+    setError(false);
+    setSubscribed(true);
+  };
 
   return (
     <div>
@@ -73,10 +73,10 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default NewsletterForm
+export default NewsletterForm;
 
 export const BlogNewsletterForm = ({ title }) => (
   <div className="flex items-center justify-center">
@@ -84,4 +84,4 @@ export const BlogNewsletterForm = ({ title }) => (
       <NewsletterForm title={title} />
     </div>
   </div>
-)
+);

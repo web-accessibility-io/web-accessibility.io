@@ -1,6 +1,6 @@
-import Script from 'next/script'
+import Script from 'next/script';
 
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata';
 
 const PosthogScript = () => {
   return (
@@ -12,7 +12,7 @@ const PosthogScript = () => {
         `}
       </Script>
     </>
-  )
-}
+  );
+};
 
-export default PosthogScript
+export default PosthogScript;
