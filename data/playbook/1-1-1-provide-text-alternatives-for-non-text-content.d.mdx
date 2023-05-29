@@ -1,29 +1,17 @@
 ---
-title: 'test'
+title: '1.1.1 Provide text alternatives for non-text content'
 date: '2021-01-12'
 lastmod: '2021-02-01'
 draft: false
-summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
+summary: 'Provide an alternative text description for non-text content. Make sure the description conveys the same message or functionality.'
 authors: ['default']
 ---
 
-# Text alternative for images
-
-**On** this page:
-
-- [Summary](#summary)
-- [Requirements](#requirements)
-- [Guidance for Design](#guidance-for-design)
-- [Guidance for iOS](#guidance-for-ios)
-- [Guidance for Android](#guidance-for-android)
-- [Guidance for Web](#guidance-for-web)
-- [More info](#more-info)
-
----
+# 1.1.1 Provide text alternatives for non-text content
 
 ## Summary
 
-**Provide an alternative text description for images. Make sure the description conveys the same message or functionality.**
+**Provide an alternative text description for non-text content. Make sure the description conveys the same message or functionality.**
 
 All non-text content (like images, charts, icons and infographics) must have an appropriate text equivalent.
 
@@ -101,74 +89,6 @@ This section needs one or more examples. [Contribute or report issues via Github
 - [Alternative text tutorial](https://webaim.org/techniques/alttext/) by WebAIM explains how to write and set alternative text
 - The [Image concepts](https://www.w3.org/WAI/tutorials/images/) tutorial by the W3C Web Accessibility Initiative explains the different types of images (e.g. informative, functional, decorative) with examples
 - [W3C Alt text decision tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
-
----
-
-## Guidance for iOS
-
-### Giving a _non-decorative_ `UIImageView` a label:
-
-```swift
-logoImageView.isAccessibilityElement = true
-logoImageView.accessibilityLabel = "Company Name"
-```
-
-### Hiding a _decorative_ `UIImageView` from screen readers:
-
-```swift
-decorativeImageView.isAccessibilityElement = false
-```
-
-### More guidance for iOS
-
-- [UIAccessibility developer reference](https://developer.apple.com/documentation/uikit/accessibility/uiaccessibility)
-
----
-
-## Guidance for Android
-
-### Giving a **non-decorative** `ImageView` a label:
-
-Any `ImageView`, `ImageButton`, etc. that are non-decorative, must have a **contentDescription** set. AndroidStudio lint check will remind you with a warning if you skip it. Remember to place your strings in the `res` folder, so you can easily change them, translate them, etc.
-
-```xml
-<ImageView
-  ...
-  android:contentDescription="@string/company_name"
-  ... />
-```
-
-Alternatively, you could set the **contentDescription** programatically:
-
-```kotlin
-imageView.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES //optional, because all views that are focusable are important for accessibility
-imageView.contentDescription = getString(R.string.company_name)
-```
-
-### Hiding a **decorative** `ImageView` from screen readers
-
-In your XML Layout, set the **contentDescription** to `@null`.
-
-```xml
-<ImageView
-  ...
-  android:contentDescription="@null"
-  ... />
-```
-
-This satisfies Android Studio's lint check by confirming that you are not providing a **contentDescription** for this view intentionally, rather than forgetting to do so.
-
-> Do not add placeholder labels to dismiss lint warnings. If you leave these placeholder labels in your app when you publish it, your users might get confused.
-
-Alternatively, you could hide the view from screen readers programatically:
-
-```kotlin
-imageView.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
-```
-
-#### More guidance for Android
-
-- [Accessibility developer reference](https://developer.android.com/guide/topics/ui/accessibility/apps#label-elements)
 
 ---
 

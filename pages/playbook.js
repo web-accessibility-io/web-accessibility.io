@@ -17,7 +17,7 @@ export default function Playbook({ allPosts, authorDetails, availableLocales }) 
     <MDXLayoutRenderer
       layout={frontMatter.layout || DEFAULT_LAYOUT}
       toc={toc}
-      allPosts={allPosts}
+      overview={true}
       mdxSource={mdxSource}
       frontMatter={frontMatter}
       availableLocales={availableLocales}

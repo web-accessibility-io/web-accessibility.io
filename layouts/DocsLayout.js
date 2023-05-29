@@ -19,7 +19,7 @@ export default function DocsLayout({
   availableLocales,
   children,
   toc,
-  allPosts,
+  overview,
 }) {
   const { date, title } = frontMatter;
   const { t } = useTranslation();
@@ -27,7 +27,6 @@ export default function DocsLayout({
 
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState();
-  console.log('allPosts', allPosts);
 
   useEffect(() => {
     const pathWithoutQuery = router.asPath.split('?')[0];
@@ -56,28 +55,24 @@ export default function DocsLayout({
   return (
     <div className="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10">
       <aside className="styled-scrollbar fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-scroll border-r py-6 pr-2 md:sticky md:block lg:py-10">
-        <DocsSidebarNav items={DocsConfig.sidebarNav} />
+        <DocsSidebarNav items={DocsConfig.sidebarNav} overview={overview} />
       </aside>
       <article className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
-        {breadcrumbs && breadcrumbs.length > 1 && (
-          <Breadcrumb>
-            {breadcrumbs.map((breadcrumb) => (
-              <BreadcrumbItem
-                key={breadcrumb.href}
-                href={breadcrumb.href}
-                isCurrent={breadcrumb.isCurrent}
-              >
-                {breadcrumb.label}
-              </BreadcrumbItem>
-            ))}
-          </Breadcrumb>
-        )}
-        <div
-          className={`prose mx-auto w-full min-w-0 max-w-none dark:prose-dark ${
-            breadcrumbs && breadcrumbs.length === 1 ? '' : 'mt-16'
-          }`}
-        >
-          {children}
+        <div>
+          {breadcrumbs && breadcrumbs.length > 1 && (
+            <Breadcrumb>
+              {breadcrumbs.map((breadcrumb) => (
+                <BreadcrumbItem
+                  key={breadcrumb.href}
+                  href={breadcrumb.href}
+                  isCurrent={breadcrumb.isCurrent}
+                >
+                  {breadcrumb.label}
+                </BreadcrumbItem>
+              ))}
+            </Breadcrumb>
+          )}
+          <div className="prose mx-auto w-full min-w-0 max-w-none dark:prose-dark">{children}</div>
         </div>
 
         {toc && (

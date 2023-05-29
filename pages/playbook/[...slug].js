@@ -67,7 +67,7 @@ export default function Playbook({ allPosts, post, authorDetails, prev, next, av
         <MDXLayoutRenderer
           layout={frontMatter.layout || DEFAULT_LAYOUT}
           toc={toc}
-          allPosts={allPosts}
+          overview={false}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
           authorDetails={authorDetails}
