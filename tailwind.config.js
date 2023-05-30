@@ -35,7 +35,7 @@ module.exports = {
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
+        primary: colors.sky,
         red: colors.red,
         blue: colors.blue,
         green: colors.green,
@@ -47,11 +47,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.700'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.700'),
               '&:hover': {
-                color: `${theme('colors.primary.600')} !important`,
+                color: `${theme('colors.primary.800')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.600') },
             },
             h1: {
               fontWeight: '700',
@@ -106,7 +106,8 @@ module.exports = {
             },
             strong: { color: theme('colors.gray.600') },
             blockquote: {
-              color: theme('colors.gray.900'),
+              color: theme('colors.gray.600'),
+              fontStyle: 'normal',
               borderLeftColor: theme('colors.gray.200'),
             },
           },
@@ -115,11 +116,11 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.500'),
+              color: theme('colors.primary.700'),
               '&:hover': {
-                color: `${theme('colors.primary.400')} !important`,
+                color: `${theme('colors.primary.800')} !important`,
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.primary.600') },
             },
             h1: {
               fontWeight: '700',

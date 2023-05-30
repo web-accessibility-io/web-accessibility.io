@@ -5,10 +5,33 @@ import Link from './Link';
 export function DocsSidebarNav({ items, overview }) {
   const pathname = usePathname();
 
+  function getHrefValues(arr) {
+    const hrefValues = [];
+
+    function traverse(obj, level) {
+      if (obj && typeof obj === 'object') {
+        if (Array.isArray(obj)) {
+          obj.forEach((item) => traverse(item, level));
+        } else if (obj.href && typeof obj.href === 'string' && level === 2) {
+          const href = obj.href;
+          const hashIndex = href.indexOf('#');
+          if (hashIndex !== -1) {
+            hrefValues.push(href.slice(hashIndex + 1));
+          }
+        } else {
+          Object.values(obj).forEach((value) => traverse(value, level + 1));
+        }
+      }
+    }
+
+    traverse(arr, 1);
+    return hrefValues;
+  }
+
   return items.length ? (
     <nav className="w-full">
       {items.map((item, index) => (
-        <div key={'nav' + index} className="pb-8">
+        <div key={'nav' + index} className="pb-4">
           {item?.href ? (
             <Link
               href={overview ? sliceStringAfterHash(item.href) : item.href}
@@ -19,14 +42,20 @@ export function DocsSidebarNav({ items, overview }) {
           ) : (
             <h4 className="font-semibold">{item.title}</h4>
           )}
-          {item.items ? <DocsSidebarNavItems items={item.items} overview={overview} /> : null}
+          {item.items ? (
+            <DocsSidebarNavItems
+              items={item.items}
+              itemIdss={getHrefValues(items)}
+              overview={overview}
+            />
+          ) : null}
         </div>
       ))}
     </nav>
   ) : null;
 }
 
-export function DocsSidebarNavItems({ items, overview }) {
+export function DocsSidebarNavItems({ items, overview, itemIdss }) {
   const itemIds = React.useMemo(
     () =>
       items
@@ -39,9 +68,9 @@ export function DocsSidebarNavItems({ items, overview }) {
     [items]
   );
 
-  const activeHeading = useActiveItem(itemIds);
+  const activeHeading = useActiveItem(itemIdss);
 
-  function useActiveItem(itemIds, active) {
+  function useActiveItem(itemIdss, active) {
     const [activeId, setActiveId] = React.useState('');
 
     React.useEffect(() => {
@@ -56,7 +85,7 @@ export function DocsSidebarNavItems({ items, overview }) {
         { rootMargin: `0% 0% -80% 0%` }
       );
 
-      itemIds?.forEach((id) => {
+      itemIdss?.forEach((id) => {
         if (!id) {
           return;
         }
@@ -68,7 +97,7 @@ export function DocsSidebarNavItems({ items, overview }) {
       });
 
       return () => {
-        itemIds?.forEach((id) => {
+        itemIdss?.forEach((id) => {
           if (!id) {
             return;
           }
@@ -79,7 +108,7 @@ export function DocsSidebarNavItems({ items, overview }) {
           }
         });
       };
-    }, [itemIds, active]);
+    }, [itemIdss, active]);
 
     return activeId;
   }
@@ -93,20 +122,35 @@ export function DocsSidebarNavItems({ items, overview }) {
               <Link
                 key={'item' + index}
                 href={overview ? sliceStringAfterHash(item.href) : item.href}
-                className="flex w-full items-center rounded-md p-2 hover:underline"
+                className={`flex w-full items-center rounded-md p-2 hover:underline ${
+                  `#${activeHeading}` === item.href.slice(item.href.indexOf('#'))
+                    ? 'font-semibold'
+                    : ''
+                }`}
               >
                 {item.title}
               </Link>
-              {item.items && `#${activeHeading}` === item.href.slice(item.href.indexOf('#')) ? (
+              {!overview ||
+              (item.items && `#${activeHeading}` === item.href.slice(item.href.indexOf('#'))) ? (
                 <DocsSidebarNavItemsList items={item.items} />
               ) : null}
             </>
           ) : (
             <>
-              <h5 key={'item' + index} className="flex w-full items-center rounded-md p-2">
+              <h5
+                key={'item' + index}
+                className={`flex w-full items-center rounded-md p-2 hover:underline ${
+                  `#${activeHeading}` === item.href.slice(item.href.indexOf('#'))
+                    ? 'font-semibold'
+                    : ''
+                }`}
+              >
                 {item.title}
               </h5>
-              {item.items ? <DocsSidebarNavItemsList items={item.items} /> : null}
+              {!overview ||
+              (item.items && `#${activeHeading}` === item.href.slice(item.href.indexOf('#'))) ? (
+                <DocsSidebarNavItemsList items={item.items} />
+              ) : null}
             </>
           )
         )}

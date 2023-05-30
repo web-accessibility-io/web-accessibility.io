@@ -41,14 +41,14 @@ const TOCInline = ({
 
   const itemIds = React.useMemo(
     () =>
-      toc
-        ? toc
+      filteredToc
+        ? filteredToc
             .flatMap((item) => [item.url])
             .flat()
             .filter(Boolean)
             .map((id) => id?.split('#')[1])
         : [],
-    [toc]
+    [filteredToc]
   );
 
   const activeHeading = useActiveItem(itemIds);

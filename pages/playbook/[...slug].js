@@ -29,7 +29,6 @@ export async function getStaticPaths({ locales, defaultLocale }) {
 export async function getStaticProps({ defaultLocale, locales, locale, params }) {
   const otherLocale = locale !== defaultLocale ? locale : '';
   const allPosts = await getAllFilesFrontMatter('playbook', otherLocale);
-  console.log('allPosts', allPosts);
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'));
   const prev = allPosts[postIndex + 1] || null;
   const next = allPosts[postIndex - 1] || null;
@@ -55,10 +54,10 @@ export async function getStaticProps({ defaultLocale, locales, locale, params })
     });
   });
 
-  return { props: { allPosts, post, authorDetails, prev, next, availableLocales } };
+  return { props: { post, authorDetails, prev, next, availableLocales } };
 }
 
-export default function Playbook({ allPosts, post, authorDetails, prev, next, availableLocales }) {
+export default function Playbook({ post, authorDetails, prev, next, availableLocales }) {
   const { mdxSource, toc, frontMatter } = post;
 
   return (

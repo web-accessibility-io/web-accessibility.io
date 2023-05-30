@@ -57,7 +57,7 @@ export default function DocsLayout({
       <aside className="styled-scrollbar fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-scroll border-r py-6 pr-2 md:sticky md:block lg:py-10">
         <DocsSidebarNav items={DocsConfig.sidebarNav} overview={overview} />
       </aside>
-      <article className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+      <article className={`relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_250px]`}>
         <div>
           {breadcrumbs && breadcrumbs.length > 1 && (
             <Breadcrumb>
@@ -78,7 +78,7 @@ export default function DocsLayout({
         {toc && (
           <div className="hidden text-sm xl:block">
             <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-              <TOCInline toc={toc} toHeading={3} />
+              <TOCInline toc={toc} toHeading={2} />
             </div>
           </div>
         )}
