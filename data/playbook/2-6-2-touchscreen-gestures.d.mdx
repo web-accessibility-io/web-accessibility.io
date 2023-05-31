@@ -1,0 +1,65 @@
+
+# Touchscreen gestures
+
+## Summary
+
+**Gestures made on a touchscreen should be made as easy as possible, without forcing the users to commit to an action.**
+
+---
+
+## Guidance
+
+> Please note this guideline provides informative guidance, but does not set requirements.
+
+- Ensuring gestures should be as easy as possible to carry out. If you require to perform complex gestures (such as requiring multiple fingers or taps, drawing shapes, etc) it can be difficult or impossible to use for screen reader users. Allow an alternative setting using simple taps or swipe gestures.
+- Activating elements on mouseup or touchend events. If the first and last position of the pointer/finger was inside the element, it is safe to assume an interaction with the element. However, if the last position was outside the element where it started, we shouldn't activate the element.
+
+### Common mistakes
+
+- Assuming that users can easily perform gestures with two or more fingers.
+- Lack of indicators for reminding how to use gestures (ie. swipe from the left side to open a menu).
+- Activating elements on touch or mouse interaction.
+- Activating elements on touchend even though the last position of the pointer/finger was outside the element.
+
+### Why?
+
+Screen reader interaction modes makes more difficult to perform complex gestures, as they require two steps for focusing and activating the elements. It can also be a challenge for users with motor or dexterity impairments, as some multi-touch gestures could be difficult or impossible to perform.
+
+Activating elements other than on mouseup or touchend prevents the user from changing their mind about the action they were trying to perform.
+
+### Official wording in the Web Content Accessibility Guidelines
+
+> [**3.4 Touchscreen Gestures:**](https://www.w3.org/TR/mobile-accessibility-mapping/#touchscreen-gestures) Many mobile devices are designed to be primarily operated via gestures made on a touchscreen. These gestures can be simple, such as a tap with one finger, or very complex, involving multiple fingers, multiple taps and drawn shapes.
+>
+> Some (but not all) mobile operating systems provide work-around features that let the user simulate complex gestures with simpler ones using an onscreen menu.
+>
+> Some best practices when deciding on touchscreen gestures include the following:
+> - Gestures in apps should be as easy as possible to carry out. *(...)*
+> - Activating elements via the mouseup or touchend event. *(...)*
+
+
+See the [W3C's detailed explanation of this guideline](https://www.w3.org/TR/mobile-accessibility-mapping/#touchscreen-gestures).
+
+---
+
+## Guidance for Design
+
+This section needs more content. [Contribute via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+
+---
+
+## Guidance for Web
+
+This section needs more content. [Contribute via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+
+---
+
+## More info
+
+### Sources
+
+- [W3C Mobile Accessibility: How WCAG 2.0 and Other W3C/WAI Guidelines Apply to Mobile](https://www.w3.org/TR/mobile-accessibility-mapping)
+
+### Contribute
+
+This document is in beta. Help us by [contributing or reporting issues via Github](https://github.com/web-accessibility-io/web-accessibility.io).

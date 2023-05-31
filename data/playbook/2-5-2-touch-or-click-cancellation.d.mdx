@@ -1,0 +1,64 @@
+
+# Touch or click cancellation
+
+## Summary
+
+**Make sure that custom buttons or links do not activate as soon as they are touched, so that users can slide their finger or mouse away to cancel the action.**
+
+---
+
+## Requirements
+
+* Interactive elements should only get activated when users release their tap/click, not as soon as they touch the element or press the mouse button down.
+
+### Why?
+
+If an interactive control fires as soon as it is touched, it causes difficulties for people with visual disabilities, cognitive disabilities, motor impairments, and many others.
+
+It is better when there is a way to ‘undo’ or change your mind (for example, by dragging your mouse or finger away after having clicked or touched a control). This avoids accidentally triggering things on a page/screen.
+
+### Official wording in the Web Content Accessibility Guidelines
+
+> [**2.5.2 Pointer Cancellation:**](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html) For [functionality](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-functionality) that can be operated using a [single pointer](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-single-pointer), at least one of the following is true: (Level A)
+>
+> * **No Down-Event**: The [down-event](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-down-event) of the pointer is not used to execute any part of the function;
+>
+> * **Abort or Undo**: Completion of the function is on the [up-event](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-up-event), and a [mechanism](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-mechanism) is available to abort the function before completion or to undo the function after completion;
+>
+> * **Up Reversal**: The up-event reverses any outcome of the preceding down-event;
+>
+> * **Essential**: Completing the function on the down-event is [essential](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html#dfn-essential). (Functions that emulate a keyboard or numeric keypad key press are considered essential.)
+
+See the [W3C's detailed explanation of this guideline](https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html) with techniques and examples.
+
+---
+
+## Guidance for Design
+
+* Do not design buttons or interactive elements that trigger their associated functionality as soon as they are touched, or as soon as the user has press the mouse button down.
+
+---
+
+## Guidance for Web
+
+### Use `click` or `mouse-up` events, not `mouse-down` events
+
+Using click events will only trigger the event on release.
+
+### More guidance for Web
+
+* [MDN - Using Touch Events](https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Using_Touch_Events)
+* [MDN – Pointer Events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)
+
+---
+
+## More info
+
+### Sources
+
+* [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
+* [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
+
+### Contribute
+
+This document is in beta. Help us by [contributing or reporting issues via Github](https://github.com/web-accessibility-io/web-accessibility.io).

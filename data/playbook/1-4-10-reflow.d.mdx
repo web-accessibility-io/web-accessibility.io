@@ -1,0 +1,79 @@
+
+# Reflow
+
+## Summary
+
+**Make sure users can access all information and functionality on a screen that's as wide as on the iPhone5, without needing to scroll in both directions.**
+
+On smaller devices or when content is zoomed there should be no loss of information or functionality, and users should not be required to scroll content both vertically and horizontally.
+
+---
+
+## Requirements
+
+### Requirements for both native and web
+
+* Make sure that all content and functionality are available on 320pt-wide screens.
+
+### Web only requirements
+
+* Make sure your pages are responsive and the content will ‘reflow’ to a single column gracefully.
+* A simple browser based test is to view the page with a viewport width of 320px, or 1280px at 400% zoom.
+  * You can zoom in on a Mac in Chrome by pressing Command and + key, until you see the resolution hit 400%.
+
+#### Common mistakes
+
+* Content does not reflow to a single column when zoomed.
+* Horizontal scrolling appears in both directions at some low resolutions when content is zoomed.
+* Using fixed sized containers and fixed position content.
+
+### Why?
+
+* People who are sight impaired often use screen magnification to resize page content and this can cause info to get lost.
+* Scrolling can often be difficult for some disabled users, more so when horizontally or both horizontally and vertically at the same time.
+
+### Official wording in the Web Content Accessibility Guidelines
+
+> [**1.4.10 Reflow (Level AA):**](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html) Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for:
+>
+> * Vertical scrolling content at a width equivalent to 320 [CSS pixels](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html#dfn-css-pixel);
+> * Horizontal scrolling content at a height equivalent to 256 [CSS pixels](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html#dfn-css-pixel).
+>
+> Except for parts of the content which require two-dimensional layout for usage or meaning.
+>
+> Note: 320 CSS pixels is equivalent to a starting viewport width of 1280 CSS pixels wide at 400% zoom. For web content which is designed to scroll horizontally (e.g., with vertical text), 256 CSS pixels is equivalent to a starting viewport height of 1024 CSS pixels at 400% zoom.
+>
+> Examples of content which requires two-dimensional layout are images, maps, diagrams, video, games, presentations, data tables, and interfaces where it is necessary to keep toolbars in view while manipulating content.
+
+See the [W3C's detailed explanation of this guideline](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html) with techniques and examples.
+
+---
+
+## Guidance for Design
+
+This section needs more content. [Contribute via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+
+---
+
+## Guidance for Web
+
+See the [W3C's detailed explanation of this guideline](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html) with techniques and examples.
+
+This section needs more content. [Contribute via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+
+### Displaying code
+
+The use of &lt;code&gt;&lt;pre&gt; formatted content (such as code) can cause horizontal scrolling. Using the CSS declarations such as word-wrap: break-word; on &lt;code&gt;&lt;pre&gt; in small viewports will help to avoid horizontal scrolling at all.
+
+---
+
+## More info
+
+### Sources
+
+* [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
+* [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
+
+### Contribute
+
+This document is in beta. Help us by [contributing or reporting issues via Github](https://github.com/web-accessibility-io/web-accessibility.io).

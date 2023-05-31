@@ -121,7 +121,7 @@ export function DocsSidebarNavItems({ items, overview, itemIdss }) {
             <>
               <Link
                 key={'item' + index}
-                href={overview ? sliceStringAfterHash(item.href) : item.href}
+                href={overview ? item.href : item.href}
                 className={`flex w-full items-center rounded-md p-2 hover:underline ${
                   `#${activeHeading}` === item.href.slice(item.href.indexOf('#'))
                     ? 'font-semibold'

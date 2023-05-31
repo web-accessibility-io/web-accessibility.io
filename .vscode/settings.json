@@ -1,6 +1,6 @@
 {
   "search.exclude": {
-    "**/node_modules": false,
-    "**/package-lock.json": false
+    "**/node_modules": true,
+    "**/package-lock.json": true
   }
 }
