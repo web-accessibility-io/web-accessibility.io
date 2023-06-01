@@ -14,6 +14,7 @@ import SectionContainer from '@/components/SectionContainer';
 import { BlogSEO } from '@/components/SEO';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import siteMetadata from '@/data/siteMetadata';
+import { usePathname } from 'next/navigation';
 
 export default function DocsLayout({
   frontMatter,
@@ -31,6 +32,7 @@ export default function DocsLayout({
 
   const router = useRouter();
   const [breadcrumbs, setBreadcrumbs] = useState();
+  const pathname = usePathname();
 
   useEffect(() => {
     const pathWithoutQuery = router.asPath.split('?')[0];
@@ -122,14 +124,16 @@ export default function DocsLayout({
                 </div>
               )}
             </div> */}
-            <div className="pt-4 xl:pt-8">
-              <Link
-                href="/playbook"
-                className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-              >
-                &larr; {t('common:backPlaybook')}
-              </Link>
-            </div>
+            {pathname !== '/playbook' && (
+              <div className="pt-4 xl:pt-8">
+                <Link
+                  href="/playbook"
+                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                >
+                  &larr; {t('common:backPlaybook')}
+                </Link>
+              </div>
+            )}
           </footer>
         </article>
       </div>
