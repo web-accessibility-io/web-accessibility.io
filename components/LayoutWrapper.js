@@ -23,7 +23,7 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <SectionContainer>
-      <header className="sticky top-0 z-40 w-full border-b bg-white dark:bg-black">
+      <header className="sticky top-0 z-40 w-full border-b border-gray-200 border-opacity-60 bg-white text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white">
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>

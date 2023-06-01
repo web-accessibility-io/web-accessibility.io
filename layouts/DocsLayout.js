@@ -54,7 +54,7 @@ export default function DocsLayout({
 
   return (
     <div className="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10">
-      <aside className="styled-scrollbar fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-scroll border-r py-6 pr-2 md:sticky md:block lg:py-10">
+      <aside className="styled-scrollbar fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-scroll border-r border-gray-200 border-opacity-60 py-6 pr-2 dark:border-gray-700 md:sticky md:block lg:py-10">
         <DocsSidebarNav items={DocsConfig.sidebarNav} overview={overview} />
       </aside>
       <article className={`relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_250px]`}>
