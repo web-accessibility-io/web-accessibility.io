@@ -1,77 +1,87 @@
 ---
-title: 'Changes on focus'
+title: 'Changes on Focus'
 date: '2023-06-02'
 lastmod: '2023-06-02'
 draft: false
-summary: "Just navigating to an interactive control with the keyboard shouldn't trigger any action, and shouldn't move the keyboard focus somewhere else."
+summary: "Learn about the importance of avoiding triggering actions or moving focus when navigating to an interactive control with the keyboard. Follow these web accessibility guidelines to provide a seamless user experience."
 authors: ['default']
 ---
 
-# Changes on focus
+# Changes on Focus
 
 ## Summary
 
-**Just navigating to an interactive control with the keyboard shouldn't trigger any action, and shouldn't move the keyboard focus somewhere else.**
+When navigating to an interactive control using the keyboard, it is essential to prevent any unintended actions, changes in focus, or significant content modifications. By following these web accessibility guidelines, you can ensure a seamless user experience without unexpected disruptions.
 
 ---
 
 ## Requirements
 
-When a user interface element receives [keyboard focus](/playbook/definitions#keyboard-focus) (for example when users reach it by pressing the 'Tab' key, or when they click on it), that should not cause any big change to happen, such as:
-* automatically loading a new page;
-* submitting a form;
-* moving the keyboard focus somewhere else;
-* significantly changing the content of the page.
+To meet web accessibility standards, user interface elements should not initiate significant changes when receiving keyboard focus. Avoid the following scenarios:
 
-Such changes only occur when initiated by the user (e.g. upon activation of a button or link).
+- Automatic loading of new pages
+- Form submission
+- Moving focus to other elements
+- Significantly altering the content on the page
 
-### Common mistakes
+These changes should only occur when explicitly triggered by the user, such as through button activation or link selection.
 
-*   A dropdown menus automatically triggers navigation as the user uses the 'Tab' or 'Arrow' keys to move between the options.
-*   A big change (like loading a new page) happens when a user is merely leaving a form control.
-*   [Focusing](/playbook/definitions#keyboard-focus) an element automatically moves the [keyboard focus](/playbook/definitions#keyboard-focus) to another element.
+### Common Mistakes
+
+To ensure compliance with accessibility guidelines, avoid the following mistakes:
+
+- Dropdown menus triggering navigation as users navigate options using the 'Tab' or 'Arrow' keys
+- Initiating significant changes, such as loading new pages, when users leave form controls
+- [Focusing](/playbook/definitions#keyboard-focus) an element automatically moves the [keyboard focus](/playbook/definitions#keyboard-focus) to another element
 
 ### Why?
 
-This stops unexpected things happening without screen reader and screen magnifer users being aware of it.
+Preventing unexpected actions without notifying screen reader and screen magnifier users is crucial for maintaining a consistent user experience.
 
-### Official wording in the Web Content Accessibility Guidelines
+### Official Wording in the Web Content Accessibility Guidelines
 
-> [**3.2.1 On Focus:**](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html) When any component receives focus, it does not initiate a [change of context](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html#context-changedef). (Level A)
+The [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/) define the relevant guideline as follows:
 
-See the [W3C's detailed explanation of this guideline](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html) with techniques and examples.
+> **3.2.1 On Focus:** When any component receives focus, it does not initiate a [change of context](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html#context-changedef). (Level A)
+
+For detailed explanations, techniques, and examples, refer to the [W3C's documentation on consistent behavior upon receiving focus](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html).
 
 ---
 
 ## Guidance for Design
 
-* Make sure you don't design an interaction, where moving the [keyboard focus](/playbook/definitions#keyboard-focus) to an element causes any of the following to happen:
-- navigating to a new page, or reloading the page
-- submitting a form
-- moving the keyboard focus somewhere else
-- [significantly changing](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html#context-changedef) the content on a page
+Follow these design recommendations to ensure compliance with web accessibility standards:
+
+- Avoid designing interactions where moving keyboard focus to an element triggers the following actions:
+  - Navigating to a new page or reloading the page
+  - Submitting a form
+  - Moving the keyboard focus elsewhere
+  - Making significant content changes on a page
 
 ---
 
 ## Guidance for Web
 
-*   `focus` or `blur` events do not cause dis-orientating events such as:
-- navigating to a new page
-- reloading the page
-- submitting a form
-- moving the focus somewhere else using the `HTMLElement.focus()` method
+To meet web accessibility requirements, ensure that `focus` or `blur` events do not cause disorienting actions, such as:
+
+- Navigating to a new page
+- Reloading the page
+- Submitting a form
+- Moving the focus using the `HTMLElement.focus()` method
 - [significantly changing](https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html#context-changedef) the content on a page
 
 ---
 
-## More info
+## More Info
 
 ### Sources
 
-* [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
-* [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
-* [Barclays' Accessibility Design Standards](https://home.barclays/who-we-are/our-suppliers/our-requirements-of-external-suppliers/)
+Refer to the following sources for additional information on web accessibility guidelines:
+
+- [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
+- [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
+- [Barclays' Accessibility Design Standards](https://home.barclays/who-we-are/our-suppliers/our-requirements-of-external-suppliers/)
 
 ### Contribute
 
-This document is in beta. Help us by [contributing or reporting issues via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+This document is in beta. Help us improve its content or report any issues via the [GitHub repository](https://github.com/web-accessibility-io/web-accessibility.io).

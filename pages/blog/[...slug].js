@@ -42,7 +42,7 @@ export async function getStaticProps({ defaultLocale, locales, locale, params })
 
   // rss
   const rss = generateRss(allPosts, locale, defaultLocale);
-  fs.writeFileSync(`./public/feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss);
+  fs.writeFileSync(`./public/blog-feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss);
 
   // Checking if available in other locale for SEO
   const availableLocales = [];

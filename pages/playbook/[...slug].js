@@ -43,8 +43,8 @@ export async function getStaticProps({ defaultLocale, locales, locale, params })
   const authorDetails = await Promise.all(authorPromise);
 
   // rss
-  const rss = generateRss(allPosts, locale, defaultLocale);
-  fs.writeFileSync(`./public/feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss);
+  const rss = generateRss(allPosts, locale, defaultLocale, 'feed.xml', 'playbook');
+  fs.writeFileSync(`./public/playbook-feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss);
 
   // Checking if available in other locale for SEO
   const availableLocales = [];

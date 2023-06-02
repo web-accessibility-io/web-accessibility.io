@@ -11,6 +11,8 @@ const i18nConfig = require('../i18n.json');
     'pages/*.tsx',
     'data/blog/**/*.mdx',
     'data/blog/**/*.md',
+    'data/playbook/**/*.mdx',
+    'data/playbook/**/*.md',
     'public/tags/**/*.xml',
     '!pages/_*.js',
     '!pages/_*.tsx',
@@ -43,8 +45,11 @@ const i18nConfig = require('../i18n.json');
         page
           .replace('pages/', '/')
           .replace('data/blog', '/blog')
+          .replace('data/playbook', '/playbook')
           .replace('public/', '/')
           .replace('.js', '')
+          .replace('.d.mdx', '')
+          .replace('.d.md', '')
           .replace('.mdx', '')
           .replace('.md', '')
           .replace(`.${loc}`, '')
@@ -106,7 +111,7 @@ const i18nConfig = require('../i18n.json');
                   ${routeMultiLang
                     .map(
                       ([xe, xloc]) =>
-                        `                               <xhtml:link 
+                        `                               <xhtml:link
                                rel="alternate"
                                hreflang="${xloc}"
                                href="${siteUrl}${xe}"/>

@@ -1,64 +1,64 @@
 ---
-title: 'Language of parts'
+title: 'Language of Parts'
 date: '2023-06-02'
 lastmod: '2023-06-02'
 draft: false
-summary: "If the page has content in more than one language (for example, if a page in English has a button labelled in Welsh), identify the language of each part in code."
+summary: "Learn how to identify the language of each part in code when a page has content in multiple languages. Follow the Web Content Accessibility Guidelines (WCAG) to ensure proper language identification for assistive technologies."
 authors: ['default']
 ---
 
-# Language of parts
+# Language of Parts
 
 ## Summary
 
-**If the page has content in more than one language (for example, if a page in English has a button labelled in Welsh), identify the language of each part in code.**
+**When a page has content in more than one language, it is important to identify the language of each part in code.**
 
-When content is displayed in a language that is different from the primary language of the page, it must be indicated in a way that assistive technologies understand.
+Assistive technologies need to understand when content is displayed in a language that is different from the primary language of the page. Proper language identification ensures an inclusive experience for all users.
 
 ---
 
 ## Requirements
 
-### Content that is written in a different language from the main language of the page, should be identified in code.
+### Content that is written in a different language from the main language of the page should be identified in code.
 
-For multi-lingual content, the language for anything that varies from the default language of the page or app must be defined in the local code for the correct speech synthesizer to be used. This includes image alternatives, form labels, quotes, objects, media alternatives, and other elements. It will over-ride the specified default language and any language and dialect setting specified on the users device.
+For multilingual content, any part of the page that varies from the default language must be defined in the code to ensure the correct speech synthesizer is used. This includes image alternatives, form labels, quotes, objects, media alternatives, and other elements. Language identification overrides the specified default language and any language and dialect settings specified on the user's device.
 
 #### Example
 
-The homepage of the [website of the Canadian Government](https://www.canada.ca/en.html) is written in English, so it has `<html lang="en">`. On the homepage, there's link to access the version written in French. The link text reads "Français". The link text is written in French, so the language of the link text is identified with `<a lang="fr">`.
+The homepage of the [website of the Canadian Government](https://www.canada.ca/en.html) is written in English, so it has `<html lang="en">`. On the homepage, there's a link to access the version written in French. The link text reads "Français". Since the link text is written in French, the language of the link text is identified with `<a lang="fr">`.
 
-### Common mistakes
+### Common Mistakes
 
-*   Content uses a different language, but the change in language is not identified in code;
-*   Content uses a different language, but the wrong language is identified in code.
+- Content uses a different language, but the change in language is not identified in code.
+- Content uses a different language, but the wrong language is identified in code.
 
 ### Why?
 
-This ensures that screen readers switch to the appropriate accent and pronunciation for that language.
+Proper language identification ensures that screen readers switch to the appropriate accent and pronunciation for that language.
 
-When listening, correct pronunciation helps understanding. For users of assistive technologies such as screen readers it is particularly important, as some have different speech synthesizers for different languages. For example, "chat" means something different when using English pronunciation rather than French.
+Correct pronunciation is crucial for understanding, especially for users of assistive technologies like screen readers, which may use different speech synthesizers for different languages. For example, the word "chat" has different meanings in English and French, and the pronunciation differs accordingly.
 
-### Official wording in the Web Content Accessibility Guidelines
+### Official Wording in the Web Content Accessibility Guidelines
 
 > [**3.1.2 Language of Parts:**](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html) The [human language](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html#human-langdef) of each passage or phrase in the content can be [programmatically determined](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html#programmaticallydetermineddef) except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text. (Level AA)
 
-See the [W3C's detailed explanation of this guideline](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html) with techniques and examples.
+For a detailed explanation of this guideline with techniques and examples, refer to the [W3C's documentation](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html).
 
 ---
 
 ## Guidance for Design
 
-* If a part of a page/screen (like a section or a button) will be written in a language that's not the same as the main language of the page, make sure that you highlight this to developers on your designs.
+- When designing a page or screen with content in a language different from the main language, ensure that developers are aware of this and highlight it in the designs.
 
 ---
 
 ## Guidance for Web
 
-*   After having identified the main language of the page using the `lang` attribute on the `html` element, use the `lang` attribute again on any part of the document that is written in a different language.
+- After identifying the main language of the page using the `lang` attribute on the `html` element, use the `lang` attribute again on any part of the document that is written in a different language.
 
-Note: It's better to only use the two-letter code representing the language (like `lang="en"`), rather than including the country as well (like `lang="en-gb"` or `lang="en-us"`):
-*   If you use `lang="en-gb"`, the content will be pronounced by screen readers with a British accent, regardless of the users' preferences. That's not ideal.
-*   If you use just `lang="en"`, the content will be pronounced with the accent that matches the users' preferences.
+Note: It is recommended to use the two-letter code representing the language (e.g., `lang="en"`) rather than including the country code (e.g., `lang="en-gb"` or `lang="en-us"`):
+- Using `lang="en-gb"` would result in the content being pronounced with a British accent, regardless of the user's preferences, which is not ideal.
+- Using just `lang="en"` allows the content to be pronounced with the accent that matches the user's preferences.
 
 ### Examples
 
@@ -88,6 +88,15 @@ Note: It's better to only use the two-letter code representing the language (lik
   ...
     <h2>Upcoming Spanish Holidays</h2>
     <p>Les Fogueres de Sant Joan.</p>
+  ...
+</html>
+```
+
+```html
+<html lang="en">
+  ...
+    <h2>Upcoming Spanish Holidays</h2>
+    <p lang="fr">Les Fogueres de Sant Joan.</p>
   ...
 </html>
 ```
