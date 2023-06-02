@@ -3,6 +3,8 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents';
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx';
 import { DashboardTableOfContents } from '@/components/Toc';
 import TOCInline from '@/components/TOCInline';
+import generateRss from '@/lib/generate-rss';
+import fs from 'fs';
 
 const DEFAULT_LAYOUT = 'DocsLayout';
 
@@ -41,8 +43,8 @@ export async function getStaticProps({ defaultLocale, locales, locale, params })
   const authorDetails = await Promise.all(authorPromise);
 
   // rss
-  // const rss = generateRss(allPosts, locale, defaultLocale)
-  // fs.writeFileSync(`./public/feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss)
+  const rss = generateRss(allPosts, locale, defaultLocale);
+  fs.writeFileSync(`./public/feed${otherLocale === '' ? '' : `.${otherLocale}`}.xml`, rss);
 
   // Checking if available in other locale for SEO
   const availableLocales = [];
