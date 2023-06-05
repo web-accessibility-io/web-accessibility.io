@@ -17,7 +17,9 @@ const CustomLink = ({ href, ...rest }) => {
     return <a href={href} {...rest} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />;
+  return (
+    <a target="_blank" rel="noopener noreferrer" className="cursor-alias" href={href} {...rest} />
+  );
 };
 
 export default CustomLink;
