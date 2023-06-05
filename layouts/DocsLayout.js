@@ -15,6 +15,16 @@ import { BlogSEO } from '@/components/SEO';
 import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import siteMetadata from '@/data/siteMetadata';
 import { usePathname } from 'next/navigation';
+import { GithubOutlined, GlobalOutlined, TwitterOutlined } from '@ant-design/icons';
+
+const editUrl = (slug, locale) =>
+  `${siteMetadata.siteRepo}/blob/master/data/playbook/${slug}.${
+    locale === 'en' ? 'd' : locale
+  }.mdx`;
+const discussUrl = (slug) =>
+  `https://mobile.twitter.com/search?q=${encodeURIComponent(
+    `${siteMetadata.siteUrl}/blog/${slug}`
+  )}`;
 
 export default function DocsLayout({
   frontMatter,
@@ -26,7 +36,7 @@ export default function DocsLayout({
   toc,
   overview,
 }) {
-  const { date, title } = frontMatter;
+  const { date, title, slug, fileName } = frontMatter;
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -88,6 +98,29 @@ export default function DocsLayout({
             <div className="prose mx-auto w-full min-w-0 max-w-none dark:prose-dark">
               {children}
             </div>
+            <div className="mt-8 border-y border-gray-200 dark:border-gray-700">
+              <div className="py-6 text-sm text-gray-700 dark:text-gray-300">
+                <Link
+                  href={discussUrl(slug)}
+                  rel="nofollow"
+                  className="mx-1 inline-flex items-center"
+                >
+                  <span className="mr-1">{t('common:twitter')}</span>{' '}
+                  <TwitterOutlined role="presentation" />
+                </Link>
+                {` • `}
+                <Link href={editUrl(slug, locale)} className="mx-1 inline-flex items-center">
+                  <span className="mr-1">{t('common:github')}</span>{' '}
+                  <GithubOutlined role="presentation" />
+                </Link>
+                {` • `}
+                <Link href="/playbook/sources" className="mx-1 inline-flex items-center">
+                  <span className="mr-1">{t('common:mainSources')}</span>
+                  <GlobalOutlined />
+                </Link>
+              </div>
+            </div>
+            <Comments frontMatter={frontMatter} />
           </div>
 
           {toc && (
@@ -97,44 +130,6 @@ export default function DocsLayout({
               </div>
             </div>
           )}
-          <footer>
-            {/* <div className="text-sm font-medium leading-5 divide-gray-200 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
-              {(next || prev) && (
-                <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                  {prev && (
-                    <div>
-                      <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                        {t('common:preva')}
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
-                      </div>
-                    </div>
-                  )}
-                  {next && (
-                    <div>
-                      <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                        {t('common:nexta')}
-                      </h2>
-                      <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                        <Link href={`/blog/${next.slug}`}>{next.title}</Link>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div> */}
-            {pathname !== '/playbook' && (
-              <div className="pt-4 xl:pt-8">
-                <Link
-                  href="/playbook"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                  &larr; {t('common:backPlaybook')}
-                </Link>
-              </div>
-            )}
-          </footer>
         </article>
       </div>
     </SectionContainer>

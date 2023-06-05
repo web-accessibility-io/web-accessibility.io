@@ -14,6 +14,10 @@
   @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
 }
 
+::selection {
+  @apply bg-[#79ffe1] text-black;
+}
+
 .csl-entry {
   @apply my-5;
 }
@@ -29,6 +33,14 @@ h6 {
 
 .styled-scrollbar {
   scrollbar-gutter: stable;
+}
+
+html {
+  @apply scroll-smooth;
+}
+
+.giscus-frame {
+  @apply w-full;
 }
 
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */

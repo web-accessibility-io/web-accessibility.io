@@ -1,46 +1,52 @@
 ---
-title: 'Device motion'
+title: 'Device Motion'
 date: '2023-06-02'
 lastmod: '2023-06-02'
 draft: false
-summary: "If a feature uses the device's motion (like shaking or tilting), make sure that responses to these motions can be turned off, and that the feature can be used in another way."
+summary: "Learn how to ensure accessibility when utilizing device motion in your web features. Provide alternative input methods, options to disable motion responses, and support for user preferences."
 authors: ['default']
 ---
 
-# Device motion
+# Device Motion
 
 ## Summary
 
-**If a feature uses the device's motion (like shaking or tilting), make sure that responses to these motions can be turned off, and that the feature can be used in another way.**
+When incorporating device motion, such as shaking or tilting, into your web features, it is crucial to ensure that users have the option to disable motion responses and that alternative input methods are available. By following these web accessibility guidelines, you can provide a more inclusive experience for all users.
 
-If you've implemented any feature that responds to moving or shaking the device (like shake to undo), make sure that the same functionality is available in other ways (like pressing a button), and that responses to motions can be disabled.
+If you have implemented any functionality that relies on device motion, ensure that equivalent functionality is accessible through alternative means, such as pressing a button or using traditional input methods. Additionally, provide the option to disable motion responses altogether.
 
 ---
 
 ## Requirements
 
-* Do not use the device motion events to activate any functionality. Or, if you do:
-  * Ensure that alternative means of input exist when using device motion sensor input.
-  * Provide a user preference to disable motion actuation (ie. responses to the device's motion).
-  * Support Operating System features which allow the user to disable motion actuation.
+To meet web accessibility standards while using device motion, adhere to the following requirements:
+
+- Avoid using device motion events as the sole means of activating functionality. However, if you do utilize device motion, make sure to:
+  - Provide alternative input methods to access the same functionality.
+  - Offer a user preference or setting to disable motion actuation, allowing users to opt-out of motion responses.
+  - Support operating system features that enable users to disable motion actuation globally.
 
 ### Why?
 
-This helps people who:
-* may be unable to perform tilting, shaking, or gesturing to use an interface;
-* may have their device mounted to a mobility aid in a fixed position;
-* move or shake involuntarily.
+Implementing these requirements benefits people who:
 
-Fixing this will ensure users:
-* can still operate all functionality by other means;
-* won't trigger functionalities without meaning to.
+- Are unable to perform tilting, shaking, or gesturing to interact with the interface.
+- Have their devices mounted to mobility aids in fixed positions.
+- Experience involuntary movements or shaking.
 
-### Common mistakes
+By meeting these guidelines, you ensure that users:
 
-* A functionality that can only be activated by moving, shaking or tilting the device. For example:
-  * When inputting text on an iPhone, shaking the device shows a dialog where you can undo the text input. That dialog can be disabled, but there's no other way to cancel the last action.
-* The user is unable to disable motion actuation. For example:
-  * Imagine an app where users can tilt their device to scroll down a page, and there's way to disable that response to tilting.
+- Can still access and operate all functionality through alternative means.
+- Are not unintentionally triggering actions or functionalities through motion responses.
+
+### Common Mistakes
+
+To ensure accessibility, avoid the following common mistakes:
+
+- Implementing functionalities that can only be activated by moving, shaking, or tilting the device without providing alternative input methods. For example:
+  - On an iPhone, shaking the device to undo text input without offering an alternative way to cancel the last action.
+- Failing to provide the ability to disable motion actuation. For example:
+  - Creating an app that allows users to tilt their devices to scroll a page but not providing an option to disable this response to tilting.
 
 ### Official wording in the Web Content Accessibility Guidelines
 
@@ -51,13 +57,17 @@ Fixing this will ensure users:
 
 See the [W3C's detailed explanation of this guideline](https://www.w3.org/WAI/WCAG21/Understanding/motion-actuation.html) with techniques and examples.
 
-## More info
+---
+
+## More Info
 
 ### Sources
 
-* [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
-* [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
+Refer to the following sources for additional information on web accessibility guidelines:
+
+- [W3C Web Content Accessibility Guidelines 2.1](https://www.w3.org/TR/WCAG21/)
+- [Government Digital Service WCAG 2.1 Primer](https://alphagov.github.io/wcag-primer/)
 
 ### Contribute
 
-This document is in beta. Help us by [contributing or reporting issues via Github](https://github.com/web-accessibility-io/web-accessibility.io).
+This document is in beta. Help us improve its content or report any issues via the [GitHub repository](https://github.com/web-accessibility-io/web-accessibility.io).
