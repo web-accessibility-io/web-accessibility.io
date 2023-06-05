@@ -1,5 +1,5 @@
 const siteMetadata = {
-  title: { en: 'web-accessibility.io', nl: 'web-accessibility.io' },
+  title: { en: 'Home', nl: 'Home' },
   author: 'Tim Damen',
   headerTitle: { en: 'web-accessibility.io', nl: 'web-accessibility.io' },
   description: {

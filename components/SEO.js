@@ -27,7 +27,7 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage, availableLoca
   const router = useRouter();
   return (
     <Head>
-      <title>{title}</title>
+      <title>{title} ¦ web-accessibility.io</title>
       <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
       <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
@@ -177,7 +177,7 @@ export const BlogSEO = ({
         availableLocales={availableLocales}
       />
       <Head>
-        <title>{`${title}`}</title>
+        <title>{`${title}`} ¦ web-accessibility.io</title>
         <meta name="robots" content="follow, index" />
         <meta name="description" content={summary} />
         <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
