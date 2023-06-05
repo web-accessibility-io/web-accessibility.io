@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils';
-
 const Callout = ({ children, icon, type = 'default', ...props }) => {
   return (
     <div
