@@ -9,7 +9,7 @@ const BreadcrumbItem = ({ children, href, isCurrent, ...props }) => {
         className={
           isCurrent
             ? 'block shrink-0 first-letter:capitalize'
-            : 'block text-gray-400 first-letter:capitalize hover:text-gray-600'
+            : 'block text-gray-500 first-letter:capitalize hover:text-gray-600 dark:text-gray-400'
         }
         aria-current={isCurrent ? 'page' : 'false'}
       >

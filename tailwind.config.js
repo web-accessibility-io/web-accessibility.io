@@ -116,11 +116,14 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.primary.700'),
+              color: theme('colors.primary.400'),
               '&:hover': {
-                color: `${theme('colors.primary.800')} !important`,
+                color: `${theme('colors.primary.500')} !important`,
               },
-              code: { color: theme('colors.primary.600') },
+              code: {
+                color: theme('colors.primary.300'),
+                backgroundColor: theme('colors.gray.800'),
+              },
             },
             h1: {
               fontWeight: '700',
