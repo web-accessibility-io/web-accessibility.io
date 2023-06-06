@@ -16,6 +16,7 @@ import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 import siteMetadata from '@/data/siteMetadata';
 import { usePathname } from 'next/navigation';
 import { GithubOutlined, GlobalOutlined, TwitterOutlined } from '@ant-design/icons';
+import { DocsPageHeader } from '@/components/pageHeader';
 
 const editUrl = (slug, locale) =>
   `${siteMetadata.siteRepo}/blob/master/data/playbook/${slug}.${
@@ -36,7 +37,7 @@ export default function DocsLayout({
   toc,
   overview,
 }) {
-  const { date, title, slug, fileName } = frontMatter;
+  const { date, title, slug, fileName, summary } = frontMatter;
   const { t } = useTranslation();
   const { locale } = useRouter();
 
@@ -96,6 +97,8 @@ export default function DocsLayout({
               </Breadcrumb>
             )}
             <div className="prose mx-auto w-full min-w-0 max-w-none dark:prose-dark">
+              <DocsPageHeader heading={title} text={summary} />
+
               {children}
             </div>
             <div className="mt-8 border-y border-gray-200 dark:border-gray-700">
@@ -104,12 +107,17 @@ export default function DocsLayout({
                   href={discussUrl(slug)}
                   rel="nofollow"
                   className="mx-1 inline-flex items-center"
+                  icon={false}
                 >
                   <span className="mr-1">{t('common:twitter')}</span>{' '}
                   <TwitterOutlined role="presentation" />
                 </Link>
                 {` • `}
-                <Link href={editUrl(slug, locale)} className="mx-1 inline-flex items-center">
+                <Link
+                  href={editUrl(slug, locale)}
+                  className="mx-1 inline-flex items-center"
+                  icon={false}
+                >
                   <span className="mr-1">{t('common:github')}</span>{' '}
                   <GithubOutlined role="presentation" />
                 </Link>
@@ -126,7 +134,7 @@ export default function DocsLayout({
           {toc && (
             <div className="hidden text-sm xl:block">
               <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-                <TOCInline toc={toc} toHeading={2} />
+                <TOCInline toc={toc} toHeading={2} fromHeading={2} />
               </div>
             </div>
           )}

@@ -1,12 +1,18 @@
 import Link from './Link';
 import siteMetadata from '@/data/siteMetadata';
 import SocialIcon from '@/components/social-icons';
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
+import { isOnGuidelines } from '@/lib/utils/path';
 
 export default function Footer() {
-  const { locale } = useRouter();
+  const pathname = usePathname();
+
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-700">
+    <footer
+      className={`border-gray-200 dark:border-gray-700 ${
+        isOnGuidelines(pathname) ? 'border-t' : ''
+      }`}
+    >
       <div className="mb-2 mt-8 flex flex-col items-center">
         <div className="mb-3 flex space-x-4">
           <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />

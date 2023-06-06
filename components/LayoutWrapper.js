@@ -10,10 +10,13 @@ import ThemeSwitch from './ThemeSwitch';
 
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { isOnGuidelines } from '@/lib/utils/path';
+import { usePathname } from 'next/navigation';
 
 const LayoutWrapper = ({ children }) => {
   const { t } = useTranslation();
   const router = useRouter();
+  const pathname = usePathname();
   const { locale, locales, defaultLocale } = router;
 
   const changeLanguage = (e) => {
@@ -23,7 +26,11 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <SectionContainer>
-      <header className="sticky top-0 z-40 w-full border-b border-gray-200 border-opacity-60 bg-white text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+      <header
+        className={`sticky top-0 z-40 w-full border-gray-200 border-opacity-60 bg-white text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white ${
+          isOnGuidelines(pathname) ? 'border-b' : ''
+        }`}
+      >
         <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>

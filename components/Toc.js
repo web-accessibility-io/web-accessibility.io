@@ -55,6 +55,7 @@ const TOCInline = ({
 
   const tocList = (
     <ul className="styled-scrollbar max-h-[70vh] space-y-2.5 overflow-y-auto py-2 text-sm">
+      <p class="font-bold">On This Page</p>
       {filteredToc.map((heading) => (
         <li key={heading.value} className={`${heading.depth >= indentDepth && 'ml-6'}`}>
           <a
