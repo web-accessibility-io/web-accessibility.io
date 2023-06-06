@@ -31,15 +31,15 @@ const LayoutWrapper = ({ children }) => {
           isOnGuidelines(pathname) ? 'border-b' : ''
         }`}
       >
-        <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="container flex h-14 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div>
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
-                <div className="mr-3">
-                  <Logo />
+                <div className="mr-1">
+                  <Logo className="h-8" />
                 </div>
                 {typeof siteMetadata.headerTitle[locale] === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  <div className="hidden h-6 text-xl font-semibold sm:block">
                     {siteMetadata.headerTitle[locale]}
                   </div>
                 ) : (
@@ -54,7 +54,7 @@ const LayoutWrapper = ({ children }) => {
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
+                  className="p-1 text-base font-medium text-gray-900 dark:text-gray-100 sm:p-4"
                 >
                   {t(`headerNavLinks:${link.title.toLowerCase()}`)}
                 </Link>
