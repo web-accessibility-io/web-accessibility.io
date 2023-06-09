@@ -24,7 +24,7 @@ const CustomLink = ({ href, icon = true, ...rest }) => {
       <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
         {rest.children}
         {icon ? (
-          <ExternalSvg role="presentation" className="-ml-0.5 -mr-2 -mt-1 inline-block h-7 w-7" />
+          <ExternalSvg role="presentation" className="-ml-0.5 -mr-2 -mt-0.5 inline-block h-7 w-7" />
         ) : (
           ''
         )}

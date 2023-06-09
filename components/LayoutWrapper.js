@@ -13,6 +13,22 @@ import { useRouter } from 'next/router';
 import { isOnGuidelines } from '@/lib/utils/path';
 import { usePathname } from 'next/navigation';
 
+import { Inter as FontSans } from 'next/font/google';
+import localFont from 'next/font/local';
+
+const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+// Font files can be colocated inside of `pages`
+const fontHeading = localFont({
+  src: '../assets/fonts/CalSans-SemiBold.woff2',
+  variable: '--font-heading',
+});
+
+console.log(fontSans, fontHeading);
+
 const LayoutWrapper = ({ children }) => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -27,7 +43,7 @@ const LayoutWrapper = ({ children }) => {
   return (
     <SectionContainer>
       <header
-        className={`sticky top-0 z-40 w-full border-gray-200 border-opacity-60 bg-white text-black dark:border-gray-700 dark:bg-gray-900 dark:text-white ${
+        className={`sticky top-0 z-40 w-full border-gray-200 border-opacity-60 bg-background text-black dark:border-gray-700 dark:text-white ${
           isOnGuidelines(pathname) ? 'border-b' : ''
         }`}
       >
@@ -36,7 +52,7 @@ const LayoutWrapper = ({ children }) => {
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
                 <div className="mr-1">
-                  <Logo className="h-8" />
+                  <Logo className="mr-1 h-10 fill-foreground" />
                 </div>
                 {typeof siteMetadata.headerTitle[locale] === 'string' ? (
                   <div className="hidden h-6 text-xl font-semibold sm:block">
