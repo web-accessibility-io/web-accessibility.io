@@ -4,10 +4,11 @@ import useTranslation from 'next-translate/useTranslation';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 import cn from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button';
-import Link from '@/components/Link';
 import NewsletterForm from '@/components/NewsletterForm';
 import { PageSEO } from '@/components/SEO';
 import { FileSearchOutlined, ReadOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import CustomLink from '@/components/Link';
+import Link from 'next/link';
 
 export async function getStaticProps({ locale, defaultLocale, locales }) {
   const otherLocale = locale !== defaultLocale ? locale : '';
@@ -24,7 +25,7 @@ async function getGitHubStars() {
       {
         headers: {
           Accept: 'application/vnd.github+json',
-          Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
+          Authorization: `Bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
         },
         next: {
           revalidate: 60,
@@ -40,6 +41,7 @@ async function getGitHubStars() {
 
     return parseInt(json['stargazers_count']).toLocaleString();
   } catch (error) {
+    console.error(error);
     return null;
   }
 }
@@ -56,13 +58,13 @@ export default function Home({ posts, locale, availableLocales, stars }) {
       />
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center">
-          <Link
+          <CustomLink
             href={siteMetadata.linkedin}
             className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
             target="_blank"
           >
             Follow along on linkedin
-          </Link>
+          </CustomLink>
           <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
             A guide for making the web accessible
           </h1>
@@ -71,10 +73,10 @@ export default function Home({ posts, locale, availableLocales, stars }) {
             applications! Join us in creating a world where technology is truly accessible to all!
           </p>
           <div className="space-x-4">
-            <Link href="/playbook" className={cn(buttonVariants({ size: 'lg' }))}>
+            <CustomLink href="/playbook" className={cn(buttonVariants({ size: 'lg' }))}>
               See Guidelines
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               href={siteMetadata.github}
               target="_blank"
               rel="noreferrer"
@@ -84,7 +86,7 @@ export default function Home({ posts, locale, availableLocales, stars }) {
               )}
             >
               GitHub
-            </Link>
+            </CustomLink>
           </div>
         </div>
       </section>
@@ -147,14 +149,14 @@ export default function Home({ posts, locale, availableLocales, stars }) {
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
             web-accessibility.io is open source and powered by open source software. <br /> The code
             is available on{' '}
-            <Link
+            <CustomLink
               href={siteMetadata.github}
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4"
             >
               GitHub
-            </Link>
+            </CustomLink>
             .{' '}
           </p>
           {stars && (
