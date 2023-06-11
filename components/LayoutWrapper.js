@@ -2,7 +2,6 @@
 import siteMetadata from '@/data/siteMetadata';
 import headerNavLinks from '@/data/headerNavLinks';
 import Logo from '@/data/logo.svg';
-import Link from './Link';
 import SectionContainer from './SectionContainer';
 import Footer from './Footer';
 import MobileNav from './MobileNav';
@@ -15,6 +14,9 @@ import { usePathname } from 'next/navigation';
 
 import { Inter as FontSans } from 'next/font/google';
 import localFont from 'next/font/local';
+import { GithubOutlined } from '@ant-design/icons';
+import CustomLink from './Link';
+import Link from 'next/link';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -47,9 +49,9 @@ const LayoutWrapper = ({ children }) => {
           isOnGuidelines(pathname) ? 'border-b' : ''
         }`}
       >
-        <div className="container flex h-14 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="container flex h-14 items-center justify-between space-x-4 sm:space-x-0">
           <div>
-            <Link href="/" aria-label={siteMetadata.headerTitle}>
+            <CustomLink href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
                 <div className="mr-1">
                   <Logo className="mr-1 h-10 fill-foreground" />
@@ -62,25 +64,26 @@ const LayoutWrapper = ({ children }) => {
                   siteMetadata.headerTitle[locale]
                 )}
               </div>
-            </Link>
+            </CustomLink>
           </div>
           <div className="flex items-center text-base leading-5">
             <div className="hidden sm:block">
               {headerNavLinks.map((link) => (
-                <Link
+                <CustomLink
                   key={link.title}
                   href={link.href}
                   className="p-1 text-base font-medium text-gray-900 dark:text-gray-100 sm:p-4"
                 >
                   {t(`headerNavLinks:${link.title.toLowerCase()}`)}
-                </Link>
+                </CustomLink>
               ))}
             </div>
+            <ThemeSwitch />
             <select
               onChange={changeLanguage}
               defaultValue={locale}
               style={{ textAlignLast: 'center' }}
-              className="text-shadow-sm bg-transparent text-sm tracking-wide text-gray-900 dark:text-gray-100"
+              className="text-shadow-sm mx-2 bg-transparent text-sm tracking-wide text-gray-900 dark:text-gray-100"
             >
               {locales.map((e) => (
                 <option value={e} key={e}>
@@ -88,7 +91,12 @@ const LayoutWrapper = ({ children }) => {
                 </option>
               ))}
             </select>
-            <ThemeSwitch />
+            <nav className="ml-1 flex">
+              <Link href={siteMetadata.github} target="_blank" rel="noreferrer">
+                <GithubOutlined style={{ fontSize: '1.4rem' }} />
+                <span className="sr-only">GitHub</span>
+              </Link>
+            </nav>
             <MobileNav />
           </div>
         </div>
