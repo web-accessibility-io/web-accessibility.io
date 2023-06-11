@@ -118,9 +118,7 @@ export default function Home({ posts, locale, availableLocales, stars }) {
               <FileSearchOutlined className="h-10 w-10 fill-current" style={{ fontSize: '3rem' }} />
               <div className="space-y-2">
                 <h3 className="font-bold">Posters (soon)</h3>
-                <p className="text-sm text-muted-foreground">
-                  Server and Client Components. Use hook.
-                </p>
+                <p className="text-sm text-muted-foreground"></p>
               </div>
             </div>
           </div>
@@ -132,9 +130,7 @@ export default function Home({ posts, locale, availableLocales, stars }) {
               />
               <div className="space-y-2">
                 <h3 className="font-bold">Videos (soon)</h3>
-                <p className="text-sm text-muted-foreground">
-                  ORM using Prisma and deployed on PlanetScale.
-                </p>
+                <p className="text-sm text-muted-foreground"></p>
               </div>
             </div>
           </div>
