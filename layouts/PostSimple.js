@@ -29,7 +29,7 @@ export default function PostLayout({
         {...frontMatter}
       />
       <ScrollTopAndComment />
-      <article>
+      <article className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
         <div>
           <header>
             <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">

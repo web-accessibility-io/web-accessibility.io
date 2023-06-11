@@ -12,24 +12,9 @@ import { useRouter } from 'next/router';
 import { isOnGuidelines } from '@/lib/utils/path';
 import { usePathname } from 'next/navigation';
 
-import { Inter as FontSans } from 'next/font/google';
-import localFont from 'next/font/local';
 import { GithubOutlined } from '@ant-design/icons';
 import CustomLink from './Link';
 import Link from 'next/link';
-
-const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
-
-// Font files can be colocated inside of `pages`
-const fontHeading = localFont({
-  src: '../assets/fonts/CalSans-SemiBold.woff2',
-  variable: '--font-heading',
-});
-
-console.log(fontSans, fontHeading);
 
 const LayoutWrapper = ({ children }) => {
   const { t } = useTranslation();
@@ -92,7 +77,7 @@ const LayoutWrapper = ({ children }) => {
               ))}
             </select>
             <nav className="ml-1 flex">
-              <Link href={siteMetadata.github} target="_blank" rel="noreferrer">
+              <Link href={siteMetadata.siteRepo} target="_blank" rel="noreferrer">
                 <GithubOutlined style={{ fontSize: '1.4rem' }} />
                 <span className="sr-only">GitHub</span>
               </Link>

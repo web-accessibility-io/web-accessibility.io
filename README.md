@@ -6,4 +6,4 @@ It only covers Level A and Level AA requirements, which are referenced in [publi
 
 ## Motivation
 
-...
+The motivation for this project comes from the believe that accessibility shouldn't be a mystery reserved for a select few. It should be something that every developer, designer, copy-writer and tester can grasp and implement effortlessly. This project will provide straightforward, hands-on content that accessibility understandable and empowers everyone to create inclusive digital experiences.

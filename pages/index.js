@@ -41,7 +41,6 @@ async function getGitHubStars() {
 
     return parseInt(json['stargazers_count']).toLocaleString();
   } catch (error) {
-    console.error(error);
     return null;
   }
 }

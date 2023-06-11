@@ -82,7 +82,6 @@ export default async function GET(req) {
       }
     );
   } catch (error) {
-    console.log(error);
     return new Response(`Failed to generate image`, {
       status: 500,
     });
