@@ -1,12 +1,9 @@
 import { ImageResponse } from '@vercel/og';
-import Logo from '@/data/logo.svg';
+import LogoWhite from '@/data/logo-white.svg';
+import LogoBlack from '@/data/logo.svg';
 import { ogImageSchema } from '@/lib/validations/og';
 
 export const runtime = 'edge';
-
-const fontRegular = fetch(new URL('../../../assets/fonts/Inter-Regular.ttf', import.meta.url)).then(
-  (res) => res.arrayBuffer()
-);
 
 const fontHeading = fetch(
   new URL('../../../assets/fonts/CalSans-SemiBold.ttf', import.meta.url)
@@ -24,7 +21,6 @@ export default async function GET(req) {
 
     const fontSize = heading.length > 100 ? '70px' : '100px';
 
-    const tRegular = await fontRegular;
     const tHeading = await fontHeading;
 
     return new ImageResponse(
@@ -45,15 +41,14 @@ export default async function GET(req) {
               fontSize: '1.5em',
             }}
           >
-            <Logo
-              tw="h-20 w-20 mr-5"
-              style={{
-                fill: '#fff',
-              }}
-            />{' '}
+            {mode === 'dark' ? (
+              <LogoWhite tw="h-20 w-20 mr-5" />
+            ) : (
+              <LogoBlack tw="h-20 w-20 mr-5" />
+            )}{' '}
             web-accessibility.io
           </span>
-          <div tw="flex flex-col flex-1 py-10 mt-16">
+          <div tw="flex flex-col py-10 mt-16">
             <div tw="flex text-2xl uppercase font-bold tracking-tight" style={{ fontSize: '40px' }}>
               What is expected
             </div>
@@ -65,7 +60,35 @@ export default async function GET(req) {
                 fontSize,
               }}
             >
-              Role of&nbsp;<span tw="text-sky-400 ml-5">Quality Assurance</span>
+              Role of&nbsp;<span tw="text-sky-400 ml-5">{heading}</span>
+            </div>
+            <div
+              tw="flex leading-[1.1] font-bold"
+              style={{
+                fontFamily: '"fontHeading"',
+                fontWeight: 'bold',
+                fontSize,
+              }}
+            >
+              in Web Accessibility
+            </div>
+          </div>
+          <div tw="flex flex-col flex-1 bg-zinc-400 w-full h-full my-10 p-10 rounded-2xl bg-opacity-20">
+            <div
+              tw="flex text-2xl uppercase font-bold tracking-tight mt-0 pt-0"
+              style={{ fontSize: '40px' }}
+            >
+              What is expected
+            </div>
+            <div
+              tw="flex leading-[1.1] font-bold"
+              style={{
+                fontFamily: '"fontHeading"',
+                fontWeight: 'bold',
+                fontSize,
+              }}
+            >
+              Role of&nbsp;<span tw="text-sky-400 ml-5">{heading}</span>
             </div>
             <div
               tw="flex leading-[1.1] font-bold"
@@ -105,14 +128,9 @@ export default async function GET(req) {
         </div>
       ),
       {
-        width: 1748,
-        height: 2480,
+        width: values.width,
+        height: values.height,
         fonts: [
-          {
-            name: 'fontRegular',
-            data: tRegular,
-            style: 'normal',
-          },
           {
             name: 'fontHeading',
             data: tHeading,

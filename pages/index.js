@@ -117,7 +117,7 @@ export default function Home({ posts, locale, availableLocales, stars }) {
             <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
               <FileSearchOutlined className="h-10 w-10 fill-current" style={{ fontSize: '3rem' }} />
               <div className="space-y-2">
-                <h3 className="font-bold">Posters (soon)</h3>
+                <h3 className="font-bold">Posters (up next)</h3>
                 <p className="text-sm text-muted-foreground"></p>
               </div>
             </div>
