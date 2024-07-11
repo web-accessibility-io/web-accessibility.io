@@ -7,7 +7,7 @@ export async function getStaticProps({ locale, defaultLocale, locales }) {
   const otherLocale = locale !== defaultLocale ? locale : '';
   const authorDetails = await getFileBySlug('playbook', [`default`], otherLocale);
   const allPosts = await getAllFilesFrontMatter('playbook', otherLocale);
-  return { props: { allPosts, authorDetails, availableLocales: locales } };
+  return { props: { allPosts, authorDetails, availableLocales: ['en'] } };
 }
 
 export default function Playbook({ allPosts, authorDetails, availableLocales }) {

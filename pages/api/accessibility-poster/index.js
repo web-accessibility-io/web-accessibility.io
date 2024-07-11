@@ -18,6 +18,7 @@ export default async function GET(req) {
 
     const { mode } = values;
     const paint = mode === 'dark' ? '#fff' : '#000';
+    const paintIcon = mode === 'dark' ? '#000' : '#fff';
 
     const fontSize = heading.length > 100 ? '70px' : '100px';
 
@@ -72,33 +73,199 @@ export default async function GET(req) {
             >
               in Web Accessibility
             </div>
+            <div
+              tw="flex mt-5"
+              style={{
+                fontSize: '1.5em',
+              }}
+            >
+              As a Web Developer, you have the ability to make the web inclusive for all. Through
+              accessible coding practices, semantic HTML, and keyboard navigation, you create
+              websites that can be accessed and used by people of diverse abilities. Collaborating
+              with designers and testers, you play a vital role in building a barrier-free online
+              experience. Your code shapes an inclusive digital world.
+            </div>
           </div>
-          <div tw="flex flex-col flex-1 bg-zinc-400 w-full h-full my-10 p-10 rounded-2xl bg-opacity-20">
-            <div
-              tw="flex text-2xl uppercase font-bold tracking-tight mt-0 pt-0"
-              style={{ fontSize: '40px' }}
-            >
-              What is expected
+          <div
+            tw="flex flex-col flex-1 bg-zinc-400 w-full h-full my-10 p-10 rounded-2xl bg-opacity-20"
+            style={{
+              fontSize: '1.3em',
+            }}
+          >
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
             </div>
-            <div
-              tw="flex leading-[1.1] font-bold"
-              style={{
-                fontFamily: '"fontHeading"',
-                fontWeight: 'bold',
-                fontSize,
-              }}
-            >
-              Role of&nbsp;<span tw="text-sky-400 ml-5">{heading}</span>
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
             </div>
-            <div
-              tw="flex leading-[1.1] font-bold"
-              style={{
-                fontFamily: '"fontHeading"',
-                fontWeight: 'bold',
-                fontSize,
-              }}
-            >
-              in Web Accessibility
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
+            </div>
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
+            </div>
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
+            </div>
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
+            </div>
+            <div tw="flex items-center w-full my-9">
+              <div tw="flex items-center justify-center w-32 h-32 bg-gray-100 rounded-full border-double border-[10px] border-sky-500 mr-10">
+                <span tw="w-18 h-18" style={{ fontSize: '2em', color: '#000' }}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    tw="w-full h-full"
+                  >
+                    <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                    <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    <path d="M15 8h-5" />
+                    <path d="M15 12h-5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                Familiarize yourself with web accessibility standards and guidelines, such as WCAG
+                2.1 (Web Content Accessibility Guidelines).
+              </div>
             </div>
           </div>
           <div tw="flex items-center w-full justify-between">

@@ -41,13 +41,7 @@ const LayoutWrapper = ({ children }) => {
                 <div className="mr-1">
                   <Logo className="mr-1 h-10 fill-foreground" />
                 </div>
-                {typeof siteMetadata.headerTitle[locale] === 'string' ? (
-                  <div className="hidden h-6 text-xl font-semibold sm:block">
-                    {siteMetadata.headerTitle[locale]}
-                  </div>
-                ) : (
-                  siteMetadata.headerTitle[locale]
-                )}
+                <div className="block h-6 text-xl font-semibold">web-accessibility.io</div>
               </div>
             </CustomLink>
           </div>
@@ -57,6 +51,7 @@ const LayoutWrapper = ({ children }) => {
                 <CustomLink
                   key={link.title}
                   href={link.href}
+                  locale={link.locale}
                   className="p-1 text-base font-medium text-gray-900 dark:text-gray-100 sm:p-4"
                 >
                   {t(`headerNavLinks:${link.title.toLowerCase()}`)}
@@ -64,18 +59,20 @@ const LayoutWrapper = ({ children }) => {
               ))}
             </div>
             <ThemeSwitch />
-            <select
-              onChange={changeLanguage}
-              defaultValue={locale}
-              style={{ textAlignLast: 'center' }}
-              className="text-shadow-sm mx-2 bg-transparent text-sm tracking-wide text-gray-900 dark:text-gray-100"
-            >
-              {locales.map((e) => (
-                <option value={e} key={e}>
-                  {e}
-                </option>
-              ))}
-            </select>
+            {!isOnGuidelines(pathname) && (
+              <select
+                onChange={changeLanguage}
+                defaultValue={locale}
+                style={{ textAlignLast: 'center' }}
+                className="text-shadow-sm mx-2 bg-transparent text-sm tracking-wide text-gray-900 dark:text-gray-100"
+              >
+                {locales.map((e) => (
+                  <option value={e} key={e}>
+                    {e}
+                  </option>
+                ))}
+              </select>
+            )}
             <nav className="ml-1 flex">
               <Link href={siteMetadata.siteRepo} target="_blank" rel="noreferrer">
                 <GithubOutlined style={{ fontSize: '1.4rem' }} />

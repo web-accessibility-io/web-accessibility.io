@@ -17,6 +17,7 @@ import siteMetadata from '@/data/siteMetadata';
 import { usePathname } from 'next/navigation';
 import { GithubOutlined, GlobalOutlined, TwitterOutlined } from '@ant-design/icons';
 import { DocsPageHeader } from '@/components/pageHeader';
+import Video from '@/components/Video';
 
 const editUrl = (slug, locale) =>
   `${siteMetadata.siteRepo}/blob/master/data/playbook/${slug}.${
@@ -98,6 +99,10 @@ export default function DocsLayout({
             )}
             <div className="prose mx-auto w-full min-w-0 max-w-none dark:prose-dark">
               <DocsPageHeader heading={title} text={summary} />
+
+              {/* <h3>Don&#39;t feel like reading? watch a video</h3>
+
+              <Video src="/videos/video-1.mp4" title="video 1" /> */}
 
               {children}
             </div>

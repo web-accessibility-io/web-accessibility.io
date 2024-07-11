@@ -3,13 +3,13 @@ import Icon from '@ant-design/icons/lib/components/Icon';
 import Link from 'next/link';
 import ExternalSvg from 'public/static/images/external.svg';
 
-const CustomLink = ({ href, icon = true, ...rest }) => {
+const CustomLink = ({ href, icon = true, locale, ...rest }) => {
   const isInternalLink = href && href.startsWith('/');
   const isAnchorLink = href && href.startsWith('#');
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
+      <Link href={href} locale={locale}>
         <span {...rest} />
       </Link>
     );
